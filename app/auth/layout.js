@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-// import Header from "./components/Header";
+import "../globals.css";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,8 +23,16 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-secondary-light text-[#3d3929]`}
       >
-        {/* <Header></Header> */}
-        {children}
+        <div className="container mx-auto">
+        <Image
+      src="/image/authLogo.png" // Ensure the path is correct
+      width={300}
+      height={500}
+      alt="Auth Logo"
+      priority={true} // Optional for faster loading
+    />
+          {children}
+        </div>
       </body>
     </html>
   );
