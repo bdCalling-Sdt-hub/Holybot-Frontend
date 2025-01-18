@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import { useState } from "react";
 
-function RippleButton({ children, onClick, className = '' }) {
+function RippleButton({ children, onClick, className = "" }) {
   const [ripples, setRipples] = useState([]);
 
   const createRipple = (event) => {
@@ -23,7 +23,7 @@ function RippleButton({ children, onClick, className = '' }) {
     onClick?.();
 
     setTimeout(() => {
-      setRipples((prevRipples) => 
+      setRipples((prevRipples) =>
         prevRipples.filter((r) => r.id !== ripple.id)
       );
     }, 600);
@@ -53,29 +53,30 @@ function RippleButton({ children, onClick, className = '' }) {
 
 function App() {
   const [isYearly, setIsYearly] = useState(false);
-  
+
   return (
-    <div className="min-h-screen  flex flex-col items-center pt-16 px-4 text-[#3d3929] space-y-5 ">
+    <div className="min-h-screen flex flex-col items-center pt-16 px-4 text-[#3d3929] space-y-5">
       {/* Logo and Title */}
-      <div className="flex gap-3 ">
+      <div className="flex gap-3">
         <Image
-          className=" size-14 w-[22px] h-[33px]"
+          className="w-[22px] h-[33px]"
           src="/image/logo.png"
           alt="HolyBot logo"
           width={200}
           height={300}
         />
-        
-        <h1 className="text-3xl fo text-[#3d3929]  font-bold">HolyBot</h1>
+        <h1 className="text-3xl font-bold text-[#3d3929]">HolyBot</h1>
       </div>
+
+      {/* Billing Toggle */}
       <div className="text-center mb-12">
-        <h1 className="lg:text-5xl text-4xl font-normal   text-[#3d3929] mb-8">Choose your plan</h1>
-        
-        {/* Billing Toggle */}
-        <div className="inline-flex rounded-full bg-[#e8e6dc]  p-1">
+        <h1 className="lg:text-5xl text-4xl font-normal text-[#3d3929] mb-8">
+          Choose your plan
+        </h1>
+        <div className="inline-flex rounded-full bg-[#e8e6dc] p-1">
           <RippleButton
             className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
-              !isYearly ? 'bg-zinc-700 text-white' : 'text-zinc-400'
+              !isYearly ? "bg-zinc-700 text-white" : "text-zinc-400"
             }`}
             onClick={() => setIsYearly(false)}
           >
@@ -83,7 +84,7 @@ function App() {
           </RippleButton>
           <RippleButton
             className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
-              isYearly ? 'bg-zinc-700 text-white' : 'text-zinc-400'
+              isYearly ? "bg-zinc-700 text-white" : "text-zinc-400"
             }`}
             onClick={() => setIsYearly(true)}
           >
@@ -97,29 +98,50 @@ function App() {
 
       {/* Pricing Card */}
       <div className="w-full max-w-sm border-2 bg-[#f6f4ef] text-[#3d3929] rounded-2xl p-6">
-        <div className=" mb-6">
-          <div className=" ">
-            {/* <Diamond className="w-6 h-6 text-white" /> */}
-            <Image src={'/image/pro.png'} height={200} width={200} alt="pro.png"></Image>
-          </div>
-          <h2 className="text-3xl font-bold text-black ">Premium</h2>
+        <div className="mb-6">
+          <Image
+            src={"/image/pro.png"}
+            height={200}
+            width={200}
+            alt="pro.png"
+          />
+          <h2 className="text-3xl font-bold text-black">
+            {isYearly ? "Pro Premium Yearly" : "Premium Monthly"}
+          </h2>
         </div>
 
+        {/* Pricing and Description */}
         <div className="mb-6">
           <div className="flex items-baseline">
-            <span className="text-3xl font-bold ">$9.99</span>
-            <span className="text-zinc-400 ml-1">/month</span>
+            <span className="text-3xl font-bold">
+              {isYearly ? "$99.99" : "$9.99"}
+            </span>
+            <span className="text-zinc-400 ml-1">
+              {isYearly ? "/year" : "/month"}
+            </span>
           </div>
+          <p className="text-sm text-zinc-500">
+            {isYearly
+              ? "Save 20% with the yearly plan!"
+              : "Flexible monthly subscription."}
+          </p>
         </div>
 
+        {/* Features List */}
         <ul className="space-y-4 mb-8 text-[#3d3929]">
-          {[
-            'All features from basic plan',
-            'All features from basic plan',
-            'All features from basic plan',
-            'All features from basic plan'
-          ].map((feature, index) => (
-            <li key={index} className="flex items-center text-[#3d3929] font-medium">
+          {(isYearly
+            ? [
+                "Priority support",
+                "Exclusive content",
+                "All premium features",
+                "Yearly bonus gifts",
+              ]
+            : ["Priority support", "Exclusive content", "All premium features"]
+          ).map((feature, index) => (
+            <li
+              key={index}
+              className="flex items-center text-[#3d3929] font-medium"
+            >
               <svg
                 className="w-5 h-5 mr-3 text-zinc-500"
                 fill="none"
@@ -138,8 +160,9 @@ function App() {
           ))}
         </ul>
 
+        {/* Subscribe Button */}
         <RippleButton className="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-colors">
-          Subscribe to Pro
+          {isYearly ? "Subscribe Yearly" : "Subscribe Monthly"}
         </RippleButton>
       </div>
     </div>

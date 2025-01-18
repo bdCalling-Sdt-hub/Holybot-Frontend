@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // 'use client';
 
 // import { useState } from "react";
@@ -299,7 +300,7 @@ const MainMessagePage = () => {
                 />
               </svg>
 
-              <h2 className="text-[25px] font-bold text-[#fb9b24]">
+              <h2 className="text-[18px] font-bold text-[#fb9b24]">
                 Start new chat
               </h2>
             </div>
@@ -402,7 +403,7 @@ const MainMessagePage = () => {
                 generateAnswer(e);
               }
             }}
-            className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 bg-white p-4 border-t flex flex-col md:flex-row items-center gap-4"
+            className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-1/2   flex flex-col md:flex-row items-center gap-4"
           >
             {/* Input Field */}
             <div className="relative flex-grow w-full">
@@ -410,7 +411,7 @@ const MainMessagePage = () => {
                 type="text"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
-                className="w-full bg-gray-50 p-2 py-4 pl-4 pr-12 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm md:text-base"
+                className="w-full bg-gray-50 p-2 py-4 pb-9 pl-4 pr-12 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm md:text-base"
                 placeholder="Ask a question..."
                 required
               />
