@@ -190,6 +190,7 @@ import { HiMenu } from "react-icons/hi";
 import { useRouter } from "next/navigation";
 import Header from "../components/Header";
 import { ArrowRight, MessagesSquare, MoveRight } from "lucide-react";
+import ThemeToggle from "../components/ThemeToggle";
 
 const MainMessagePage = () => {
   const router = useRouter();
@@ -314,10 +315,10 @@ const MainMessagePage = () => {
                 <p className="text-[12px] font-medium">Debating about Bibble</p>
               </div>
             </div>
-            <div className="flex items-start  mt-5 gap-2">
+            <div className="flex items-start  mt-5 gap-2 cursor-pointer"  onClick={() => router.push("history")}>
               <button
                 className="pl-5 font-bold text-[18px]  mb-2"
-                onClick={() => router.push("history")}
+               
               >
                 View all
               </button>
@@ -366,7 +367,8 @@ const MainMessagePage = () => {
             <h1 className="text-xl md:text-2xl font-bold ">
               What is the main message of the Bible?
             </h1>
-            <Header></Header>
+            {/* <Header></Header> */}
+            {/* <ThemeToggle></ThemeToggle> */}
           </div>
 
           {/* Content Section */}

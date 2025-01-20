@@ -2,6 +2,7 @@ import Image from "next/image";
 import { BsArrowRight } from "react-icons/bs";
 import { TbMessage2Down } from "react-icons/tb";
 import SearchBar from "./components/SearchBar";
+import Link from "next/link";
 
 export default function HomeFirstPage() {
   const getGreeting = () => {
@@ -19,6 +20,7 @@ export default function HomeFirstPage() {
   return (
     <div>
       <div className="max-w-4xl  mx-auto p-6">
+        
         {/* Header Section */}
         <header className="text-center mb-6">
           <div className="flex justify-center items-center lg:w-2/5 mx-auto bg-secondary-dark text-white py-2 px-4 rounded-full mb-3">
@@ -151,9 +153,11 @@ export default function HomeFirstPage() {
                 <h1 className="text-xl font-medium"> Your recent chats</h1>
               </div>
               <div>
+                <Link href={'/history'}>
                 <button className=" rounded-lg flex items-center gap-1 font-medium">
                   View all <BsArrowRight></BsArrowRight>{" "}
                 </button>
+                </Link>
               </div>
             </div>
             <div className="lg:flex gap-4">
